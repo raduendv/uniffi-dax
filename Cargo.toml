@@ -1,0 +1,55 @@
+[package]
+name = "uniffi-dax"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["lib", "cdylib"]
+name = "uniffi_dax"
+
+[dependencies]
+anyhow = "1.0.104"
+aws-config = { version = "1.12.0", features = ["behavior-version-latest"] }
+tokio = { version = "1.53.1", features = ["full"] }
+uniffi = { version = "=0.31.0", features = ["bindgen", "build", "cli", "tokio"] }
+uniffi-bindgen-cs = { git = "https://github.com/NordSecurity/uniffi-bindgen-cs.git", rev = "e10ce410eb3a10cc19c7928b93ea8d84e038c034", optional = true }
+uniffi-bindgen-go = { git = "https://github.com/NordSecurity/uniffi-bindgen-go.git", rev = "0b7fb4ceef12021bd7f790cc516fa9133e001813", optional = true }
+uniffi-bindgen-java = { version = "=0.3.1", optional = true }
+uniffi-bindgen-node-js = { version = "=0.0.16", optional = true }
+
+[features]
+bindgen-builtin = ["uniffi/cli"]
+bindgen-cs = ["dep:uniffi-bindgen-cs"]
+bindgen-go = ["dep:uniffi-bindgen-go"]
+bindgen-java = ["dep:uniffi-bindgen-java"]
+bindgen-js = ["dep:uniffi-bindgen-node-js"]
+
+[[bin]]
+name = "uniffi-bindgen-kotlin"
+path = "src/bin/uniffi-bindgen-kotlin.rs"
+required-features = ["bindgen-builtin"]
+
+[[bin]]
+name = "uniffi-bindgen-python"
+path = "src/bin/uniffi-bindgen-python.rs"
+required-features = ["bindgen-builtin"]
+
+[[bin]]
+name = "uniffi-bindgen-cs"
+path = "src/bin/uniffi-bindgen-cs.rs"
+required-features = ["bindgen-cs"]
+
+[[bin]]
+name = "uniffi-bindgen-java"
+path = "src/bin/uniffi-bindgen-java.rs"
+required-features = ["bindgen-java"]
+
+[[bin]]
+name = "uniffi-bindgen-js"
+path = "src/bin/uniffi-bindgen-js.rs"
+required-features = ["bindgen-js"]
+
+[[bin]]
+name = "uniffi-bindgen-go"
+path = "src/bin/uniffi-bindgen-go.rs"
+required-features = ["bindgen-go"]

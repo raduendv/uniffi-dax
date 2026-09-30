@@ -1,0 +1,6 @@
+/target
+/examples/go/bin
+/examples/go/uniffi_dax
+/examples/python/__pycache__
+/examples/java/target
+/examples/kotlin/target

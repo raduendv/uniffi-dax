@@ -1,0 +1,20 @@
+[bindings.kotlin]
+package_name = "com.amazon.dax"
+
+[bindings.java]
+package_name = "com.amazon.dax"
+
+[bindings.csharp]
+namespace = "UniffiDax"
+
+[bindings.csharp.custom_types.DaxAppName]
+builtin_type = "string"
+type_name = "string"
+into_custom = "{}"
+from_custom = "{}"
+
+[bindings.csharp.custom_types.DaxRegion]
+builtin_type = "string"
+type_name = "string"
+into_custom = "{}"
+from_custom = "{}"
